@@ -1,5 +1,7 @@
 <script>
+    import { supabase } from "./store";
 	export let name;
+console.log(supabase)
 </script>
 
 <main>

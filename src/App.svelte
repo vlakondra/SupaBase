@@ -1,5 +1,8 @@
 <script>
     import { supabase } from "./store";
+	import {supauser} from "./store"
+	import User from './user.svelte'
+
 	import { onMount } from "svelte";
 	export let name;
 	let data 
@@ -11,10 +14,27 @@
 			 console.log('N',n)
         data=n.data
 	});
+
+
+	async function signUpNewUser() {
+  const { data, error } = await supabase.auth.signUp({
+    email: 'kondrashkin.wladimir@yandex.ru',
+    password: 'mazay123MAZAY',
+    options: {
+      redirectTo: {emailRedirectTo:'https://5173-vlakondra-supabase-7j950gy9dah.ws-eu105.gitpod.io/'}
+    }
+  })
+  console.log(error, data.user.email)
+  $supauser.user=data.user
+}
+
 </script>
 
 <main>
-	<h1>Hello {name}!!!</h1>
+	<User/>
+	<p>
+		<button on:click={()=>signUpNewUser()}>SignUp</button>
+	</p>
 	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
 <p>sbp_309267a93fc2ac91905a9a40479140d3569bddfa</p>
 

@@ -7,8 +7,6 @@
 	export let name;
 	let data 
 
-	import { Navbar, NavBrand, NavLi, NavUl, NavHamburger } from 'flowbite-svelte'
-
 
 	onMount(async () => {
 		let n = await supabase
@@ -20,14 +18,14 @@
 
 
 	async function signUpNewUser() {
-  const { data, error } = await supabase.auth.signUp({
-    email: 'kondrashkin.wladimir@yandex.ru',
-    password: 'mazay123MAZAY',
-    options: {
-      redirectTo: {emailRedirectTo:'https://5173-vlakondra-supabase-7j950gy9dah.ws-eu105.gitpod.io/'}
-    }
+      const { data, error } = await supabase.auth.signUp({
+              email: 'kondrashkin.wladimir@yandex.ru',
+              password: 'mazay123MAZAY',
+              options: {
+                redirectTo: {emailRedirectTo:'https://5173-vlakondra-supabase-7j950gy9dah.ws-eu105.gitpod.io/'}
+              }
   })
-  console.log(error, data.user.email)
+  console.log(error, data.user)
   $supauser.user=data.user
 }
 

@@ -28,6 +28,18 @@
   $supauser.user=data.user
 }
 
+
+async function signInUser() {
+
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: 'kondrashkin.wladimir@yandex.ru',
+    password: 'mazay123MAZAY',
+})
+
+  console.log(error, data.user.email)
+  $supauser.user=data.user
+
+}
 </script>
 
 <main>
@@ -35,11 +47,11 @@
 	<p>
 		<button on:click={()=>signUpNewUser()}>SignUp</button>
 	</p>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-<p>sbp_309267a93fc2ac91905a9a40479140d3569bddfa</p>
+	<p>
+		<button on:click={signInUser}>SignIn</button>
+	</p>
 
 {#if data}
-	 <!-- content here -->
 
 {#each data  as item}
 	 <div style='display:flex; flex-direction:row'>

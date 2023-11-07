@@ -1,13 +1,14 @@
 /** @type {import('tailwindcss').Config}*/
 const config = {
-  content: ["./src/**/*.{html,js,svelte,ts}"],
+  content: ["./src/**/*.{html,js,svelte,ts,cjs}"],
 
   theme: {
     extend: {},
   },
 
   plugins: [
-    require('flowbite/plugin')
+    // require('flowbite/plugin'),
+    require("@tailwindcss/forms")
   ],
   darkMode: 'class',
   theme: {
